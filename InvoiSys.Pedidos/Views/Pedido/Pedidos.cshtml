@@ -31,7 +31,7 @@
                                     <td>@pedido.DataPrevistaEntrega.ToString("dd/MM/yyyy")</td>
                                     <td>@pedido.Observacao</td>
                                     <td><a asp-controller="Pedido" asp-action="DetalhesPedido" asp-route-NumeroDoPedido="@pedido.NumeroDoPedido" class="btn btn-padrao btn-sm">Ver</a></td>
-                                    <td><a asp-controller="Pedido" asp-action="RemoverPedido" asp-route-NumeroDoPedido="@pedido.NumeroDoPedido" class="btn btn-danger btn-sm">Remover</a></td>
+                                    <td><a asp-controller="Pedido" asp-action="RemoverPedido" asp-route-NumeroDoPedido="@pedido.NumeroDoPedido" class="btn btn-danger btn-sm" onclick="return confirm('Deseja realmente remover o pedido @pedido.NumeroDoPedido ?');">Remover</a></td>
                                 </tr>
                             }
                         }

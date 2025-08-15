@@ -1,0 +1,86 @@
+﻿@model PedidoModel
+
+<main>
+    <div class="row">
+        <div class="col-12">
+            <div class="row">
+                <div class="col-12">
+                    <h3>Adicionar Pedido</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <form asp-controller="Pedido" asp-action="CriarPedido" method="post" id="form-pedidos">
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="mb-3">
+                                    <label for="numeroDoPedido" class="form-label">Número do Pedido</label>
+                                    <input asp-for="NumeroDoPedido" class="form-control" readonly />
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="mb-3">
+                                    <label for="DataDaSolicitacao" class="form-label">Data da Solicitação</label>
+                                    <input asp-for="DataDaSolicitacao" class="form-control" readonly />
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="mb-3">
+                                    <label for="DataPrevistaEntrega" class="form-label">Data Prevista para Entrega</label>
+                                    <input asp-for="DataPrevistaEntrega" class="form-control" readonly />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <label for="Observacao" class="form-label">Observação</label>
+                                <textarea asp-for="Observacao" class="form-control" readonly></textarea>
+                            </div>
+                        </div>
+                        <div class="col-12 d-flex justify-content-end">
+                            <div class="mt-3">
+                                <a asp-controller="Pedido" asp-action="Pedidos" class="btn btn-padrao btn-sm">Voltar para Pedidos</a>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-12">
+                                <h5>Itens do Pedido</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Código do Produto</th>
+                                            <th>Quantidade</th>
+                                            <th>Descrição do Produto</th>
+                                            <th>Valor do Produto</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="itensTable">
+
+                                        @{
+                                            foreach (ItemPedidoModel itemDoPedido in Model.ListaItensDoPedido)
+                                            {
+                                                <tr>
+                                                    <td>@itemDoPedido.CodigoDoProduto</td>
+                                                    <td>@itemDoPedido.Quantidade</td>
+                                                    <td>@itemDoPedido.DescricaoDoProduto</td>
+                                                    <td>@itemDoPedido.ValorDoProduto</td>
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script src="~/js/CriarPedido.js"></script>

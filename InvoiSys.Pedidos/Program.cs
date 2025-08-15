@@ -1,7 +1,12 @@
+using InvoiSys.Pedidos.Interfaces;
+using InvoiSys.Pedidos.Repository;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped<IPedidoRepository, PedidoRepository>();
 
 var app = builder.Build();
 
@@ -22,7 +27,7 @@ app.MapStaticAssets();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}")
+    pattern: "{controller=Pedido}/{action=Pedidos}/{id?}")
     .WithStaticAssets();
 
 
